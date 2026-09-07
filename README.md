@@ -1,5 +1,7 @@
 # intesta-mcp
 
+<!-- mcp-name: io.intesta/intesta-mcp -->
+
 An MCP server that lets an AI agent **check who it is dealing with before it acts.**
 
 [Intesta](https://intesta.io) is a trust registry. Every entity has a trust level on the

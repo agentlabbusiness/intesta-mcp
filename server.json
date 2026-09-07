@@ -2,18 +2,18 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.intesta/intesta-mcp",
   "title": "Intesta — trust registry lookup",
-  "description": "Check a domain's A0-A4 trust level and verified facts before an agent trusts, pays, or shares data with it. Refuse, don't guess.",
+  "description": "Check a domain's A0-A4 trust level and verified facts before your agent acts.",
   "repository": {
     "url": "https://github.com/agentlabbusiness/intesta-mcp",
     "source": "github"
   },
   "websiteUrl": "https://intesta.io",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "packages": [
     {
       "registryType": "pypi",
       "identifier": "intesta-mcp",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"

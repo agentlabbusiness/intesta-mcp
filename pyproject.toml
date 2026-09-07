@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "intesta-mcp"
-version = "0.1.0"
+version = "0.1.1"
 description = "MCP server for the Intesta trust registry: let an agent check a domain's A0-A4 trust level and verified facts before it acts."
 readme = "README.md"
 license = "MIT"
