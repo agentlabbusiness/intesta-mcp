@@ -1,0 +1,44 @@
+# Публикация intesta-mcp на PyPI через Trusted Publisher (OIDC) с provenance-аттестацией.
+# Требует один шаг на pypi.org (вход оператора): проект intesta-mcp → Settings → Publishing →
+# Add Trusted Publisher: owner agentlabbusiness, repo intesta-mcp, workflow publish.yml, environment pypi.
+# Токенов в репо нет: OIDC id-token выдаётся GitHub'ом на время задания.
+name: publish
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade build
+      - run: python -m build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write   # OIDC для Trusted Publisher
+      contents: read
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          attestations: true
